@@ -1,20 +1,39 @@
-import React from 'react' 
+import React , {useState} from 'react' 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import HeaderImg from '../images/desktop-image-hero-1.jpg'
+import Col from 'react-bootstrap/Col';
+import {ReactComponent as Right} from '../images/icon-angle-right.svg';
+import {ReactComponent as Left} from '../images/icon-angle-left.svg';
 import Image1 from '../images/image-about-dark.jpg'
 import Image2 from '../images/image-about-light.jpg'
+import {ReactComponent as Arrow} from '../images/icon-arrow.svg'
 import '../styles/main.css'
 
-const Header = () => {
+const Header = ({slides}) => {
+  const [currentIndex , setCurrentIndex] = useState(1)
+
+function Forwards () {
+  const isLastSlide =  currentIndex === slides.length - 1
+  let newIndex = isLastSlide ? 0 : currentIndex + 1
+
+  setCurrentIndex(newIndex)
+ 
+} 
+
+function Backwards () {
+  const isFirstSlide =  currentIndex === 0
+  let newIndex = isFirstSlide ? slides.length - 1 : currentIndex + 1
+
+  setCurrentIndex(newIndex)
+ 
+} 
     return <>
     {/*Desktop header design*/}
     <Container fluid = "true">
       <Row noGutters>
-        <Col lg = {7} sm = {12} style = {{paddingLeft: 0 , paddingRight : 0}}>
-          <section className = "header" style = {{backgroundImage : `url(${HeaderImg})`, width: '100%',
-           backgroundPosition : 'center' , backgroundSize: 'cover', height: '70vh'}} >
+        <Col lg = {7} sm = {12} style = {{paddingLeft: 0 , paddingRight : 1}}>
+          <section className = "header" style = {{backgroundImage : `url(${slides[currentIndex].url})`, width: '100%',
+           backgroundPosition : 'center' , backgroundSize: 'cover', height: '82vh'}} >
             <nav>
             <div className='nav-links'>
             <ul>
@@ -30,7 +49,15 @@ const Header = () => {
         </Col>
 
         <Col lg = {5} sm = {12}>
-        
+            <section className = 'SlideText'>
+          <h1>{slides[currentIndex].textHeader}</h1>
+          <p>{slides[currentIndex].textMain}</p>
+          <h3> Shop now </h3> <Arrow  width = '150' height = '43' viewBox='-62 16 115 1' style = {{marginLeft : '120px', marginTop : '-32px'}}/>
+        </section>
+        <div className='buttons'>
+            <button onClick = {Backwards} > <Left /> </button>
+            <button onClick = {Forwards} > <Right /> </button>
+          </div>
         </Col>
       </Row>
     </Container>
