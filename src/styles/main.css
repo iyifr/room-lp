@@ -117,3 +117,81 @@ nav {
     width:50%;
 
 }
+
+.hamburger {
+    border: 0;
+    height: 40px;
+    width: 40px;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.hamburger:hover {
+    background-color: #2642af;
+}
+
+@media screen and (max-width: 600px) and (max-height: 950px) {
+    * {
+            margin: 0;
+            padding: 0;
+            font-family: 'League Spartan', sans-serif;
+        }
+
+  .mobileHeader {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    text-transform: lowercase;
+  }
+
+  .SlideText {
+      margin: 15% 2%;
+      padding: 4% 5%;
+      width: 100%
+  }
+
+  .SlideText h1 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 2.3rem;
+  }
+
+  .buttonsMobile {
+      background-color: black;
+      max-width: 25vw;
+      max-height: 70px;
+      height: 10vh;
+      margin: -5vh;
+      padding: 5% 2%;
+      position: relative;
+      left: 84%;
+      bottom: 1.9em;
+      border-radius: 0.8em;
+  }
+
+  .buttonsMobile button {
+      background: none;
+      width: 50%;
+      border: none
+
+  }
+
+  .aboutText {
+      margin: 10% 2%;
+      padding: 5% 7%
+  }
+
+  .aboutText h3 {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.9em;
+  }
+}
