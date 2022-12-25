@@ -1,5 +1,5 @@
 import React , {useState, useEffect} from 'react';
-import Navbar from './Navbar';
+import ResponsiveNav from './ResponsiveNav';
 import {ReactComponent as Arrow} from '../images/icon-arrow.svg'
 import {ReactComponent as Right} from '../images/icon-angle-right.svg';
 import {ReactComponent as Left} from '../images/icon-angle-left.svg';
@@ -35,7 +35,7 @@ function Backwards () {
     <>
     <section className = "mobileTop"  style = {{backgroundImage : `url(${slides[currentIndex].url})`, width: '100%',
            backgroundPosition : 'center' , backgroundSize: 'cover', height: '53vh', marginTop : '0', paddingTop: '5vh'}} >
-            <h2 className='mobileHeader'>Room</h2>
+            <ResponsiveNav />
      </section>
 
      <div className='buttonsMobile'>

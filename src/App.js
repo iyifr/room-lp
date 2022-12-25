@@ -6,7 +6,7 @@ import Image2 from './images/desktop-image-hero-2.jpg'
 import Image3 from './images/desktop-image-hero-3.jpg';
 import Mobileimg1 from './images/mobile-image-hero-1.jpg'
 import Mobileimg2 from "./images/mobile-image-hero-2.jpg";
-import Mobileimg3 from './images/mobile-image-hero-3.jpg'
+import Mobileimg3 from './images/mobile-image-hero-3.jpg';
 
 const slides = [
   {url : Image1 ,
@@ -43,10 +43,23 @@ const slidesMobile = [
 ]
 
 function App() {
+
+  {/*const [width , setWidth] = React.useState(window.innerWidth);
+  const [height, setHeight] = React.useState(window.innerHeight);
+  const breakpoint = 620
+
+  React.useEffect(() => {
+    const handleWindowResize = ()=> { 
+      setWidth(window.innerWidth)
+      window.addEventListener('resize' , handleWindowResize)
+    }
+    return () => window.removeEventListener('resize' , handleWindowResize)
+  })
+*/}
   return (
    <>
-  {/*<Header slides = {slides}/>*/}
-  <HeaderMobile slides = {slidesMobile} />
+    {/*<Header slides = {slides}/>*/}
+    <HeaderMobile slides = {slidesMobile}/> 
    </>
   );
 }
