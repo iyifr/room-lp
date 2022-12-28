@@ -44,24 +44,42 @@ const slidesMobile = [
 
 function App() {
 
-  {/*const [width , setWidth] = React.useState(window.innerWidth);
-  const [height, setHeight] = React.useState(window.innerHeight);
-  const breakpoint = 620
+  const [dimensions , setDimensions] = React.useState({
+    width: window?.innerWidth , 
+    height: window?.innerHeight
+  });
+  const breakpoint = {
+    WB : 690,
+    HB : 900
+  }
+
+  function debounce(fn , ms) {
+    let timer;
+    return ()=> {
+      clearTimeout(timer) ;
+      timer = setTimeout( ()=> {
+        timer = null;
+        fn.apply(this, arguments) ;
+      }, ms)
+    };
+  }
 
   React.useEffect(() => {
-    const handleWindowResize = ()=> { 
-      setWidth(window.innerWidth)
-      window.addEventListener('resize' , handleWindowResize)
-    }
-    return () => window.removeEventListener('resize' , handleWindowResize)
-  })
-*/}
-  return (
-   <>
-    {/*<Header slides = {slides}/>*/}
-    <HeaderMobile slides = {slidesMobile}/> 
-   </>
-  );
+   const debouncedHandleResize = debounce(function handleWindowResize() { 
+      setDimensions({
+         width: window?.innerWidth , 
+         height: window?.innerHeight
+      }); }, 1000);
+
+
+      window.addEventListener('resize' , debouncedHandleResize)
+  
+    return ()=> window.removeEventListener('resize' , debouncedHandleResize);
+  }, [])
+
+  return dimensions.width < breakpoint.WB  && dimensions.height < breakpoint.HB ?  <HeaderMobile slides = {slidesMobile}/> : <Header slides = {slides}/> 
+
+
 }
 
 export default App;
